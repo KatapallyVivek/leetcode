@@ -36,3 +36,28 @@
 	<li><code>piles.length &lt;= h &lt;= 10<sup>9</sup></code></li>
 	<li><code>1 &lt;= piles[i] &lt;= 10<sup>9</sup></code></li>
 </ul>
+
+<h1>Solution</h1>
+
+<p>This problem is <b>Binary Search on Answer</b>.</p>
+
+<p>Here, first we take <code>low = 1</code> and <code>high = maximum pile</code>.</p>
+
+<p>Then we guess one eating speed and check whether Koko can eat all the bananas within <code>h</code> hours. The number we guess is <code>mid</code>.</p>
+
+<p>We calculate the total number of hours required for Koko to eat all the bananas at speed <code>mid</code>.</p>
+
+<p>If total hours are <code>&lt;= h</code>, it means Koko can eat all the bananas within the given time. But there is a chance that she can eat at an even smaller speed, so we search in the left part.</p>
+
+<p>If total hours are <code>&gt; h</code>, it means Koko is taking more time than allowed. Therefore, she needs to eat faster, so we search in the right part.</p>
+
+<p>At last, we return <code>low</code>, because when the binary search ends, <code>low</code> points to the <b>smallest valid eating speed</b>.</p>
+
+<p>In other words, at the end:</p>
+
+<pre>
+low  = first valid speed
+high = last invalid speed
+</pre>
+
+<p>Since the question asks for the <b>minimum possible eating speed</b>, we return <code>low</code>.</p>
