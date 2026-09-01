@@ -24,8 +24,29 @@
 <p>&nbsp;</p>
 <p><strong>Constraints:</strong></p>
 
+
 <ul>
 	<li><code>1 &lt;= candies.length &lt;= 10<sup>5</sup></code></li>
 	<li><code>1 &lt;= candies[i] &lt;= 10<sup>7</sup></code></li>
 	<li><code>1 &lt;= k &lt;= 10<sup>12</sup></code></li>
 </ul>
+
+---
+
+# Solution
+
+<p>This is binary search on ans.</p>
+
+<p>Here our search space is <code>low = 1</code> and <code>high = max of the array</code>.</p>
+
+<p>We guess a number (<code>mid</code>) and check from each pile, how many students can get equal candies from that pile.</p>
+
+<p>We travel one by one pile (nothing but each element in the array) and update no. of children can receive.</p>
+
+<p>If the number of children can receive are <code>>=</code> given children (<code>k</code>) then we update <code>ans = mid</code> and search the right part of the array.</p>
+
+<p>We'll repeat it until the whole array is traversed, and keep updating the <code>ans</code>.</p>
+
+<p>After traversing the whole array, if the no. of children can receive <code><</code> total children (<code>k</code>), it means the no. of candies per student should be decreased (reducing the <code>mid</code>), so we search on the left side of the array.</p>
+
+<p>At last, we return <code>ans</code> (latest feasible mid).</p>
