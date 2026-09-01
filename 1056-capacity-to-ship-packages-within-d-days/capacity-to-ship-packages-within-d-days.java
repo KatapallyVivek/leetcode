@@ -8,6 +8,14 @@ class Solution {
             high += weight;
         }
 
+        if(days == 1) {
+            return high;
+        }
+
+        if (days == weights.length) {
+            return low;
+        }
+
         while (low <= high) {
 
             int mid = low + (high - low) / 2;
