@@ -50,3 +50,16 @@ Note that the cargo must be shipped in the order given, so using a ship of capac
 	<li><code>1 &lt;= days &lt;= weights.length &lt;= 5 * 10<sup>4</sup></code></li>
 	<li><code>1 &lt;= weights[i] &lt;= 500</code></li>
 </ul>
+
+---
+
+# Solution
+<p>This is binary search on ans.</p>
+<p>The search space is <code>low = max of arr ele</code> and <code>high = total sum of the arr</code></p>
+<p>The reason to take <code>low = max of arr ele</code> is the ship capacity should be atleast the max of ele</p>
+<p>The reason to take <code>high = total sum of the arr </code> is, if <code>days = 1</code> we need to ship overall weight at single day.</p>
+<p>Now, we guess a number in the search space(<code>mid</code>) as a capacity of the ship, and we check how many days it is taking to ship all the containers as per that capacity</p>
+<p>If no.of days it taking to ship all the containers is <code><= days</code>, it means all the right part of the elements are possible, so we check the left part of the arr to minimise the capacity.</p>
+<p>update <code>ans = mid</code></p>
+<p>If no.of days it taking to ship all the containers is <code>> days</code>, it means it is taking too many days to ship the containers. so we much increase the capacity.so, we search on the right part of the arr.</p>
+<p>At last we'll return <code>ans</code> or <code>low</code>. Both works.</p>
