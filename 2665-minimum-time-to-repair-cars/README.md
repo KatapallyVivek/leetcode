@@ -40,3 +40,14 @@ It can be proved that the cars cannot be repaired in less than 16 minutes.​​
 	<li><code>1 &lt;= ranks[i] &lt;= 100</code></li>
 	<li><code>1 &lt;= cars &lt;= 10<sup>6</sup></code></li>
 </ul>
+
+---
+
+# Solution
+<p>This is binary search on ans.</p>
+<p>In this solution we guess a number(<code>mid</code> as time), and check how many cars does the mechanic able to repair in that time.</p>
+<p>We check it for each and every mechanic and maintain no.of cars mechanics repaired.</p>
+<p>If no.of cars repaired is <code>>=</code> given <code>cars</code>, means by the time mechanics can repair all the cars. So, we search on the left part, to know whether the mechanics can repair in less time.</p>
+<p>If no.of repaired is <code><</code> given <code>cars</code>, means all the mechanics are unable to repair all the given cars in that amt of time. So, we must increase the time. So, we search on the right part.</p>
+<p>Atlast we can create a variable <code>ans = mid</code> and return <code>ans</code> or we can directly return <code>low</code></p>
+
