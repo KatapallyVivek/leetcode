@@ -8,22 +8,22 @@ class Node {
 };
 */
 
+
 class Solution {
     public Node flatten(Node head) {
-        if(head == null) {
+        if (head == null) {
             return head;
         }
 
         Node curr = head;
+        while (curr != null) {
+            if (curr.child != null) {
 
-        while(curr != null) {
-            if(curr.child != null) {
                 Node next = curr.next;
-                Node childHead = flatten(curr.child);
+                Node childHead = curr.child;
 
                 curr.next = childHead;
-                 childHead.prev = curr;
-                curr.child = null;
+                childHead.prev = curr;
 
                 Node tail = childHead;
                 while (tail.next != null) {
@@ -35,6 +35,8 @@ class Solution {
                 if (next != null) {
                     next.prev = tail;
                 }
+
+                curr.child = null;
             }
             curr = curr.next;
         }
